@@ -1,0 +1,184 @@
+@extends('layouts.main')
+@section('content')
+<div class='main__content-detail'>
+    <div class='detail__course'>
+        <div class='detail__course-main'>
+            <div class='detail__head'>
+                <h1><?=$course['name']?></h1>
+                <p><i class='fa-solid fa-check'></i><?=$course['description']?></p>
+            </div>
+            <div class='line'></div>
+            <div class='detail__benifit'>
+                <h4>Bạn sẽ học được gì</h4>
+                <p>Hiểu chi tiết về các khái niệm cơ bản trong JS <br>
+                    Xây dựng được website đầu tiên kết hợp với JS<br>
+                    Tự tin khi phỏng vấn với kiến thức vững chắc<br>
+                    Có nền tảng để học các thư viện và framework JS<br>
+                    Nắm chắc các tính năng trong phiên bản ES6<br>
+                    Thành thạo DOM APIs để tương tác với trang web<br>
+                    Ghi nhớ các khái niệm nhờ bài tập trắc nghiệm</p>
+            </div>
+            <div class='line'></div>
+
+            <div class='detail__syllabus'>
+                <h4>Nội dung khóa học</h4>
+                @foreach ($lectures as $item)
+                <div class='detail__syllabus-title'><?=$item['title']?></div>
+                @endforeach
+            </div>
+            <div class='line'></div>
+            
+            <div class='detail__comment'>
+                <h4>Bình luận</h4>
+                <div class='detail__comment-wrap'>
+                    <div class='detail__comment-add'>
+                        <form action='<?=BASE_URL?>comment/add' method='POST'>
+                            <div>Nội dung</div>
+                            <input type='hidden' name='id_course' value='<?=$course['id']?>'>
+                            <textarea name='content' id='' cols='60' rows='3' style='padding: 10px'></textarea>
+                            <button class='detail__add_cmt' type='submit' name='add'>Thêm bình luận</button>
+                        </form>
+                    </div>
+                    @foreach ($comments as $item)
+                    <div class='detail__comment-item'>
+                        <div class='detail__comment-avt'><i class='fa-solid fa-user'></i></div>
+                        <div class='detail__comment-item-content-parent'>
+                            <div class='detail__comment-item-user'><?=$item['username']?></div>
+                            <div class='detail__comment-item-content-child'><?=$item['content']?></div>
+                        </div>
+
+                    </div>
+                    @endforeach
+                    
+                </div>
+            </div>
+            
+        </div>
+        <div class='detail__course-aside'>
+            <img src='<?=BASE_URL?>public/assets/image/course/<?=$course['image']?>' alt=''>
+            <div class='aside__head'>
+            <div class='detail__course-price'>Giá: <?=number_format($course['price'])?> vnđ</div>
+            <form action='<?=BASE_URL?>course/register/<?=$course['id']?>' method='POST'>
+                <button class='detail__btn-register'>Đăng ký</button>        
+            </form>
+            </div>
+            <div class='line'></div>
+            
+            <div class='detail__aside-rating'>
+                <div class='rate'>
+                    <form action='<?=BASE_URL?>admin/course/rate/<?=$course['id']?>' method="post">
+                        <div class='start_rating'><h4>Đánh giá</h4></div>
+                        <div class='star'>
+                            <label for="check"><i class="fa-solid fa-star star1"></i></label>
+                            <label for="check2"><i class="fa-solid fa-star star2"></i></label>
+                            <label for="check3"><i class="fa-solid fa-star star3"></i></label>
+                            <label for="check4"><i class="fa-solid fa-star star4"></i></label>
+                            <label for="check5"><i class="fa-solid fa-star star5"></i></label>
+                            <input type="radio" id="check" name="rating" value="1" class="hidden"  />
+                            <input type="radio" id="check2" name="rating" value="2" class="hidden" />
+                            <input type="radio" id="check3" name="rating" value="3" class="hidden" />
+                            <input type="radio" id="check4" name="rating" value="4" class="hidden" />
+                            <input type="radio" id="check5" name="rating" value="5" class="hidden" />
+                            
+                        </div>
+                        <button type='Submit' class='rating'>Đánh giá</button>
+                    </form>
+                </div>
+                @foreach ($rates as $item)
+                <div class='detail__comment-item'>
+                    <div class='detail__comment-avt'><i class='fa-solid fa-user'></i></div>
+                    <div class='detail__comment-item-content-parent'>
+                        <div class='detail__comment-item-user'><?=$item['username']?></div>
+                        <div class='detail__comment-item-content-child'>
+                            <?php $i2= 5 - $item['rating'];
+                                 for($i=0; $i<$item['rating']; $i++):?>
+                            <i class='fa-solid fa-star' style='color: rgb(228 228 36)'></i>
+                            <?php endfor;?>
+                            <?php for($i=0;$i<$i2;$i++): ?>
+                            <i class='fa-solid fa-star' style='color: rgb(79, 76, 76)'></i>
+                            <?php endfor;?>
+                        </div>
+                    </div>
+                </div>
+                    
+                @endforeach
+                
+            </div>
+        </div>
+
+        
+
+    </div>
+</div>
+<?php if(isset($success)):?>
+<div class='alert_success show'>
+    <h2>Đăng ký thành công</h2>
+    <button class='btn btn-success accept'>Xác nhận</button>
+</div>
+<?="
+<script>
+    let btnAccept = document.querySelector('.accept')
+    let containerSuccess = document.querySelector('.alert_success')
+    btnAccept.addEventListener('click', function() {
+        containerSuccess.classList.remove('show')
+    })
+</script>"?>
+<style>
+    .hidden{
+        display:none;
+        opacity: 0;
+        border:none;
+        outline: none;
+    }
+</style>
+<?php endif; ?>
+<?php 
+echo "<script>
+    var start1 = document.querySelector('.star1')
+    var start2 = document.querySelector('.star2')
+    var start3 = document.querySelector('.star3')
+    var start4 = document.querySelector('.star4')
+    var start5 = document.querySelector('.star5')
+    start1.addEventListener('click', function() {
+        start1.style.color = 'yellow'
+        start2.style.color = 'black'
+        start3.style.color = 'black'
+        start4.style.color = 'black'
+        start5.style.color = 'black'
+
+    })
+    start2.addEventListener('click', function() {
+        start1.style.color = 'yellow'
+        start2.style.color = 'yellow'
+        start3.style.color = 'black'
+        start4.style.color = 'black'
+        start5.style.color = 'black'
+
+    })
+    start3.addEventListener('click', function() {
+        start1.style.color = 'yellow'
+        start2.style.color = 'yellow'
+        start3.style.color = 'yellow'
+        start4.style.color = 'black'
+        start5.style.color = 'black'
+
+    })
+    start4.addEventListener('click', function() {
+        start1.style.color = 'yellow'
+        start2.style.color = 'yellow'
+        start3.style.color = 'yellow'
+        start4.style.color = 'yellow'
+        start5.style.color = 'black'
+
+    })
+    start5.addEventListener('click', function() {
+        start1.style.color = 'yellow'
+        start2.style.color = 'yellow'
+        start3.style.color = 'yellow'
+        start4.style.color = 'yellow'
+        start5.style.color = 'yellow'
+
+    })
+    </script>"
+?>
+@endsection

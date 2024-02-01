@@ -1,0 +1,113 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+<div class="main__content-home">
+ <div class="home">
+ <div class="home__aside">
+ <div class="home__aside-title">
+ <h5>Các khóa học</h5>
+ </div>
+ <?php $__currentLoopData = $categories; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <div class="home__aside-item"><a href="<?=BASE_URL?>home/cate/<?=$item['id']?>"><?=$item['name']?></a></div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </div>
+ <div class="home__main">
+ <!-- Khóa học mới -->
+ <h3>Khóa học mới</h3>
+ <div class="home__course">
+ <?php $__currentLoopData = $courses; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <div class="course__item">
+ <img src="<?=BASE_URL?>public/assets/image/course/<?=$item['image']?>" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5><?=$item['name']?></h5>
+ </a>
+ <span><b>Giá :</b> <?=number_format($item['price'])?> vnđ</span>
+ <div class="course__btn">
+ <a href="<?=BASE_URL?>course/<?=$item['id']?>" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ <?php /* <div class="course__item">
+ <img src="/public/assets/image/home/laptoplearn.jpg" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5>Khóa học lập trình php</h5>
+ </a>
+ <span><b>Giá</b>: 900.000 vnđ</span>
+ <span><b>Giảng viên</b>: Nguyễn Văn A</span>
+ <div class="course__btn">
+ <a href="" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div>
+ <div class="course__item">
+ <img src="/public/assets/image/home/laptoplearn.jpg" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5>Khóa học lập trình php</h5>
+ </a>
+ <span><b>Giá</b>: 900.000 vnđ</span>
+ <span><b>Giảng viên</b>: Nguyễn Văn A</span>
+ <div class="course__btn">
+ <a href="" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div> */ ?>
+
+
+ </div>
+ <!-- Khóa học nổi bật -->
+ <?php /* <h3>Khóa học nổi bật</h3> */ ?>
+ <?php /* <div class="home__course">
+ <div class="course__item">
+ <img src="/public/assets/image/home/laptoplearn.jpg" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5>Khóa học lập trình php</h5>
+ </a>
+ <span><b>Giá</b>: 900.000 vnđ</span>
+ <span><b>Giảng viên</b>: Nguyễn Văn A</span>
+ <div class="course__btn">
+ <a href="" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div>
+ <div class="course__item">
+ <img src="/public/assets/image/home/laptoplearn.jpg" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5>Khóa học lập trình php</h5>
+ </a>
+ <span><b>Giá</b>: 900.000 vnđ</span>
+ <span><b>Giảng viên</b>: Nguyễn Văn A</span>
+ <div class="course__btn">
+ <a href="" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div>
+ <div class="course__item">
+ <img src="/public/assets/image/home/laptoplearn.jpg" alt="">
+ <div class="course__item-content">
+ <a href="">
+ <h5>Khóa học lập trình php</h5>
+ </a>
+ <span><b>Giá</b>: 900.000 vnđ</span>
+ <span><b>Giảng viên</b>: Nguyễn Văn A</span>
+ <div class="course__btn">
+ <a href="" class="Course__btn"><button class="btn btn-primary">Xem khóa học</button></a>
+ </div>
+ </div>
+ </div>
+
+
+ </div> */ ?>
+ </div>
+
+ </div>
+
+</div>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('layouts.main'); } ?>

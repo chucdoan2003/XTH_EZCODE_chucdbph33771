@@ -1,0 +1,34 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+<a href="<?=BASE_URL?>admin/course/content/create/<?=$id?>"><button class="btn btn-success">Add lecture</button></a>
+<table class="table">
+ <thead>
+ <tr>
+ <th scope="col">id</th>
+ <th scope="col">Title</th>
+ <th scope="col">Content</th>
+ <th scope="col">Action</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php $__currentLoopData = $lectures; $this->addLoop($__currentLoopData);$this->getFirstLoop();
+ foreach($__currentLoopData as $item): $loop = $this->incrementLoopIndices();  ?>
+ <tr>
+ <th scope="row"><?= $item['id']?></th>
+ <td><?= $item['title']?></td>
+ <td><?= $item['content']?></td>
+ 
+ <td>
+ <a href="<?=BASE_URL?>/admin/course/content/edit/<?=$item['id']?>"><button
+ class="btn btn-warning">edit</button></a>
+ <a onclick="return confirm('Bạn có muốn xóa danh mục này không ?')"
+ href="<?=BASE_URL?>/admin/course/content/delete/<?=$item['id']?>"><button
+ class="btn btn-danger">delete</button></a>
+ </td>
+
+ </tr>
+ <?php endforeach; $this->popLoop(); $loop = $this->getFirstLoop(); ?>
+ </tbody>
+</table>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('admin.layouts.main'); } ?>

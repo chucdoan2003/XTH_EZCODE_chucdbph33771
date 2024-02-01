@@ -1,0 +1,36 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+<a href="<?=BASE_URL?>admin/category/create"><button class="btn btn-success">Add category</button></a>
+<table class="table">
+ <thead>
+ <tr>
+ <th scope="col">id</th>
+ <th scope="col">Name</th>
+ <th scope="col">Discription</th>
+ <th scope="col">Thumbnail</th>
+ <th scope="col">Action</th>
+ </tr>
+ </thead>
+ <tbody>
+ <?php foreach($categories as $cate):?>
+ <tr>
+ <th scope="row">
+ <?=$cate['id']?> </th>
+ <td><?=$cate['name']?></td>
+ <td><?=$cate['description']?></td>
+ <td><img src="<?=BASE_URL?>/public/assets/image/category/<?=$cate['thumbnail']?>" alt="" height="100px"
+ width="100px">
+ </td>
+ <td>
+ <a href="<?=BASE_URL?>/admin/category/edit/<?=$cate['id']?>"><button
+ class="btn btn-warning">edit</button></a>
+ <a onclick="return confirm('Bạn có muốn xóa danh mục này không ?')"
+ href="<?=BASE_URL?>/admin/category/delete/<?=$cate['id']?>"><button
+ class="btn btn-danger">delete</button></a>
+ </td>
+ </tr>
+ <?php endforeach;?>
+ </tbody>
+</table>
+<?php $this->stopSection(); ?>
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('admin.layouts.main'); } ?>

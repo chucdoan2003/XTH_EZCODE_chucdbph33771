@@ -1,0 +1,22 @@
+<?php $_shouldextend[1]=1; ?>
+<?php $this->startSection('content'); ?>
+ <h1 style="text-align:center">Add Category</h1>
+ <form action="<?=BASE_URL?>admin/category/add" method="POST" enctype="multipart/form-data">
+ <div class="input-group mb-3">
+ <span class="input-group-text" id="inputGroup-sizing-default">Name</span>
+ <input type="text" class="form-control" aria-label="Sizing example input"
+ aria-describedby="inputGroup-sizing-default" name="name">
+ </div>
+ <div class="input-group mb-3">
+ <span class="input-group-text" id="inputGroup-sizing-default">Description</span>
+ <input name="description" type="text" class="form-control" aria-label="Sizing example input"
+ aria-describedby="inputGroup-sizing-default">
+ </div>
+ <div class="input-group mb-3">
+ <input name="image" type="file" class="form-control" id="inputGroupFile02">
+ </div>
+ <button type="submit" class="btn btn-success" name="add">Add</button>
+ </form>
+<?php $this->stopSection(); ?>
+
+<?php if (isset($_shouldextend[1])) { echo $this->runChild('admin.layouts.main'); } ?>
