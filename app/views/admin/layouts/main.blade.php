@@ -25,14 +25,14 @@
             </div>
             <div class="admin__aside-nav">
                 <ul>
-                    <li><a href="{{ BASE_URL }}admin/">Trang chủ</a> </li>
+                    <li><a href="{{ BASE_URL }}admin/">Home</a> </li>
                     <li> <a href="{{ BASE_URL }}admin/course/list">Course</a> </li>
                     <li> <a href="{{ BASE_URL }}admin/category/list">Category</a></li>
                     <li> <a href="{{ BASE_URL }}admin/user/list">users</a></li>
                     <li> <a href="{{ BASE_URL }}admin/course/register">Registered Course</a></li>
 
                     <li> <a href="{{ BASE_URL }}admin/comment/list"> comment</a></li>
-                    <li> <a href="{{ BASE_URL }}"> Trang chủ người dùng</a></li>
+                    <li> <a href="{{ BASE_URL }}">Home user</a></li>
 
                 </ul>
             </div>

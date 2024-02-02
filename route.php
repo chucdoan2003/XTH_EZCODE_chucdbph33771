@@ -26,8 +26,8 @@ $router->get('home/cate/{id}',[HomeController::class,'course_cate']);
 
 $router->get('course',[CourseController::class, 'list']);
 $router->get('course/{id}',[CourseController::class, 'detail']);
-$router->get('course/register/list',[CourseController::class, 'listRegistcourseUser']);
-$router->post('course/register/{id}',[CourseController::class, 'register']);
+$router->get('course/register/list',[CourseController::class, 'listRegistcourseUser'],['before'=>'auth']);
+$router->post('course/register/{id}',[CourseController::class, 'register'],['before'=>'auth']);
 $router->post('course/change/{id}',[CourseController::class, 'change']);
 $router->filter('auth',function(){
     if(!isset($_SESSION['user'])){
@@ -49,7 +49,7 @@ $router->filter('authAdmin',function(){
 });
  
 //Rate
-$router->post('admin/course/rate/{id}', [RateController::class, 'add']);
+$router->post('admin/course/rate/{id}', [RateController::class, 'add'],['before'=>'auth']);
 
 $router->group(['before'=>'authadmin','prefix'=>'admin'],function($router){
     $router->get('/',[AdminController::class, 'index']);
