@@ -18,7 +18,7 @@
  <header>
  <ul>
  <li><a href="<?php echo BASE_URL?>">Home </a></li>||
- <li><a href="<?=BASE_URL?>course/register/list">Registered courses  </a></li>||
+ <li><a href="<?=BASE_URL?>course/register/list">Carts</a></li>||
  <li><a href="">Contact </a></li>||
  <?php if(isset($_SESSION['user']) && $_SESSION['user']['role']==1) :?>
  <li><a href="<?=BASE_URL?>admin">Admin</a></li>

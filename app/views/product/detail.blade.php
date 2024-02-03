@@ -57,9 +57,9 @@
         <div class='detail__course-aside'>
             <img src='<?=BASE_URL?>public/assets/image/course/<?=$course['image']?>' alt=''>
             <div class='aside__head'>
-            <div class='detail__course-price'>Giá: <?=number_format($course['price'])?> vnđ</div>
+            <div class='detail__course-price'>Price: <?=number_format($course['price'])?> vnđ</div>
             <form action='<?=BASE_URL?>course/register/<?=$course['id']?>' method='POST'>
-                <button class='detail__btn-register'>Đăng ký</button>        
+                <button class='detail__btn-register'>Register</button>        
             </form>
             </div>
             <div class='line'></div>

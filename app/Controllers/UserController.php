@@ -30,9 +30,7 @@ use App\Models\UserModel;
                 }else{
                     $this->data['tb']='tài khoản hoặc mật khẩu không đúng';
                     $this->render('user/login',$this->data);
-
                 }
-
             }else{
                 $this->render('user/login');
             }

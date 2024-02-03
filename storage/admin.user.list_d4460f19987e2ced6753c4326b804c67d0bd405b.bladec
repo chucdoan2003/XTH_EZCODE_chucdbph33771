@@ -17,9 +17,7 @@
  <td><?=$user['username']?></td>
  <td><?=$user['email']?></td>
  <td>
- <a href="<?=BASE_URL?>/admin/user/edit/<?=$user['id']?>"><button
- class="btn btn-warning">edit</button></a>
- <a onclick="return confirm('Bạn có muốn xóa danh mục này không ?')"
+ <a onclick="return confirm('Bạn có muốn xóa user này không ?')"
  href="<?=BASE_URL?>/admin/user/delete/<?=$user['id']?>"><button
  class="btn btn-danger">delete</button></a>
  </td>

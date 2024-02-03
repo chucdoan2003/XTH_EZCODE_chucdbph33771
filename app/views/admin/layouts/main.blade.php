@@ -28,9 +28,8 @@
                     <li><a href="{{ BASE_URL }}admin/">Home</a> </li>
                     <li> <a href="{{ BASE_URL }}admin/course/list">Course</a> </li>
                     <li> <a href="{{ BASE_URL }}admin/category/list">Category</a></li>
-                    <li> <a href="{{ BASE_URL }}admin/user/list">users</a></li>
-                    <li> <a href="{{ BASE_URL }}admin/course/register">Registered Course</a></li>
-
+                    <li> <a href="{{ BASE_URL }}admin/user/list">Users</a></li>
+                    <li> <a href="{{ BASE_URL }}admin/course/register">Course Register</a></li>
                     <li> <a href="{{ BASE_URL }}admin/comment/list"> comment</a></li>
                     <li> <a href="{{ BASE_URL }}">Home user</a></li>
 

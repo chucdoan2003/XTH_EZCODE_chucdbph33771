@@ -29,11 +29,11 @@ class   CourseModel extends Database{
         $this->getData($sql, false);
     }
     function listCouresRegister(){
-        $sql="SELECT courses.name,courses.image, users.username, user_courses.payments_status, user_courses.id FROM user_courses JOIN users ON user_courses.id_user=users.id JOIN courses ON user_courses.id_course=courses.id ORDER BY user_courses.id DESC";
+        $sql="SELECT courses.name,courses.price,courses.image, users.username, user_courses.payments_status, user_courses.id FROM user_courses JOIN users ON user_courses.id_user=users.id JOIN courses ON user_courses.id_course=courses.id ORDER BY user_courses.id DESC";
         return $this->getData($sql, true);
     }
     function listCouresRegisterUser($id){
-        $sql="SELECT courses.name, courses.image, users.username, user_courses.payments_status, user_courses.id FROM user_courses JOIN users ON user_courses.id_user=users.id JOIN courses ON user_courses.id_course=courses.id WHERE user_courses.id_user=$id ORDER BY user_courses.id DESC";
+        $sql="SELECT courses.name,courses.price, courses.image, users.username, user_courses.payments_status, user_courses.id FROM user_courses JOIN users ON user_courses.id_user=users.id JOIN courses ON user_courses.id_course=courses.id WHERE user_courses.id_user=$id ORDER BY user_courses.id DESC";
         return $this->getData($sql, true);
     }
     function change($id,$status){

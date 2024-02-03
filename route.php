@@ -52,10 +52,11 @@ $router->filter('authAdmin',function(){
 $router->post('admin/course/rate/{id}', [RateController::class, 'add'],['before'=>'auth']);
 
 $router->group(['before'=>'authadmin','prefix'=>'admin'],function($router){
+    
     $router->get('/',[AdminController::class, 'index']);
     //user list
     $router->get('user/list',[UserController::class, 'list']);
-
+    $router->get('user/delete/{id}',[UserController::class, 'deleteUser']);
     // list comment 
     $router->get('/comment/list',[CommentController::class, 'list']);
     $router->get('/comment/delete/{id}',[CommentController::class, 'deleteComment']);
@@ -102,7 +103,7 @@ $router->group(['prefix'=>'user'],function($router){
     $router->post('register',[UserController::class, 'register']);  
     $router->get('forgot',[UserController::class, 'forgot']);  
     $router->post('forgot',[UserController::class, 'forgot']); 
-    $router->get('/delete/{id}',[UserController::class, 'deleteUser']);
+    
 });
 
 $dispatcher = new Phroute\Phroute\Dispatcher($router->getData());
